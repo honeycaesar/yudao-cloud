@@ -1,11 +1,12 @@
 package cn.iocoder.yudao.module.oa.job.meetingroom;
 
 import cn.hutool.core.util.StrUtil;
-import com.xxl.job.core.handler.annotation.XxlJob;
 import cn.iocoder.yudao.framework.tenant.core.job.TenantJob;
 import cn.iocoder.yudao.module.oa.service.meetingroom.OaMeetingRoomBookingService;
-import jakarta.annotation.Resource;
+import com.xxl.job.core.handler.annotation.XxlJob;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 // TODO @AI：是不是分开 job 噢？因为毕竟是 remind；
 /**

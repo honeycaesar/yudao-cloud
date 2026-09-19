@@ -1,9 +1,5 @@
 package cn.iocoder.yudao.module.oa.service.supply;
 
-import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.lenient;
-import org.junit.jupiter.api.BeforeEach;
 import cn.hutool.core.collection.CollUtil;
 import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.framework.common.util.object.BeanUtils;
@@ -12,20 +8,24 @@ import cn.iocoder.yudao.module.oa.controller.admin.supply.vo.item.*;
 import cn.iocoder.yudao.module.oa.dal.dataobject.supply.OaSupplyItemDO;
 import cn.iocoder.yudao.module.oa.dal.mysql.supply.OaSupplyItemMapper;
 import cn.iocoder.yudao.module.system.api.dept.DeptApi;
-import jakarta.annotation.Resource;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
+import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Map;
 
+import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
 import static cn.iocoder.yudao.module.oa.enums.ErrorCodeConstants.*;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.lenient;
 
 /**
  * {@link OaSupplyItemServiceImpl} 的单元测试类
@@ -41,9 +41,9 @@ public class OaSupplyItemServiceImplTest extends BaseDbUnitTest {
     @Resource
     private OaSupplyItemMapper supplyItemMapper;
 
-    @MockitoBean
+    @MockBean
     private OaSupplyApplyService supplyApplyService;
-    @MockitoBean
+    @MockBean
     private DeptApi deptApi;
 
     @BeforeEach

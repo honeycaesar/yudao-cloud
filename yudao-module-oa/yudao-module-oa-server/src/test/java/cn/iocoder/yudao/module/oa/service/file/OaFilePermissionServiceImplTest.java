@@ -1,9 +1,5 @@
 package cn.iocoder.yudao.module.oa.service.file;
 
-import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.lenient;
-import org.junit.jupiter.api.BeforeEach;
 import cn.hutool.core.collection.CollUtil;
 import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import cn.iocoder.yudao.module.oa.controller.admin.file.vo.permission.OaFilePermissionSaveReqVO;
@@ -11,19 +7,23 @@ import cn.iocoder.yudao.module.oa.dal.dataobject.file.OaFilePermissionDO;
 import cn.iocoder.yudao.module.oa.dal.mysql.file.OaFilePermissionMapper;
 import cn.iocoder.yudao.module.system.api.dept.DeptApi;
 import cn.iocoder.yudao.module.system.api.user.AdminUserApi;
-import jakarta.annotation.Resource;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
+import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.lenient;
 
 /**
  * {@link OaFilePermissionServiceImpl} 的单元测试类
@@ -39,11 +39,11 @@ public class OaFilePermissionServiceImplTest extends BaseDbUnitTest {
     @Resource
     private OaFilePermissionMapper filePermissionMapper;
 
-    @MockitoBean
+    @MockBean
     private OaFileNodeService fileNodeService;
-    @MockitoBean
+    @MockBean
     private AdminUserApi adminUserApi;
-    @MockitoBean
+    @MockBean
     private DeptApi deptApi;
 
     @BeforeEach

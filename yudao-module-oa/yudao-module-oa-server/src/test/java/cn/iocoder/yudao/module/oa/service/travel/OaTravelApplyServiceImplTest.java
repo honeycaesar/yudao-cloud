@@ -1,8 +1,5 @@
 package cn.iocoder.yudao.module.oa.service.travel;
 
-import static org.mockito.Mockito.lenient;
-import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
-
 import cn.hutool.core.collection.CollUtil;
 import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.framework.dict.core.DictFrameworkUtils;
@@ -21,8 +18,6 @@ import cn.iocoder.yudao.module.oa.service.attendance.OaAttendanceService;
 import cn.iocoder.yudao.module.system.api.dict.DictDataApi;
 import cn.iocoder.yudao.module.system.api.user.AdminUserApi;
 import cn.iocoder.yudao.module.system.api.user.dto.AdminUserRespDTO;
-import jakarta.annotation.Resource;
-import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,11 +25,13 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
+import javax.annotation.Resource;
+import javax.validation.ConstraintViolationException;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -42,6 +39,7 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.UUID;
 
+import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
 import static cn.iocoder.yudao.framework.common.util.date.LocalDateTimeUtils.getMonthDateTimeRange;
 import static cn.iocoder.yudao.framework.common.util.object.BeanUtils.toBean;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
@@ -50,6 +48,7 @@ import static cn.iocoder.yudao.module.oa.enums.ErrorCodeConstants.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.lenient;
 
 /**
  * {@link OaTravelApplyServiceImpl} 的单元测试类
@@ -65,15 +64,15 @@ public class OaTravelApplyServiceImplTest extends BaseDbUnitTest {
     @Resource
     private OaTravelApplyMapper travelApplyMapper;
 
-    @MockitoBean
+    @MockBean
     private OaAttendanceService attendanceService;
-    @MockitoBean
+    @MockBean
     private OaNoRedisDAO noRedisDAO;
-    @MockitoBean
+    @MockBean
     private AdminUserApi adminUserApi;
-    @MockitoBean
+    @MockBean
     private DictDataApi dictDataApi;
-    @MockitoBean
+    @MockBean
     private BpmProcessInstanceApi processInstanceApi;
     @BeforeEach
     public void before() {

@@ -1,9 +1,5 @@
 package cn.iocoder.yudao.module.oa.service.note;
 
-import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.lenient;
-import org.junit.jupiter.api.BeforeEach;
 import cn.hutool.core.collection.CollUtil;
 import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.framework.security.core.LoginUser;
@@ -18,20 +14,22 @@ import cn.iocoder.yudao.module.oa.dal.mysql.note.OaNoteReceiverMapper;
 import cn.iocoder.yudao.module.oa.enums.note.OaNoteTypeEnum;
 import cn.iocoder.yudao.module.oa.enums.schedule.OaPriorityEnum;
 import cn.iocoder.yudao.module.system.api.user.AdminUserApi;
-import jakarta.annotation.Resource;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
+import javax.annotation.Resource;
+import javax.sql.DataSource;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
-import javax.sql.DataSource;
 
+import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
@@ -39,6 +37,8 @@ import static cn.iocoder.yudao.module.oa.enums.ErrorCodeConstants.NOTE_ACCESS_DE
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.lenient;
 
 /**
  * {@link OaNoteServiceImpl} 的单元测试类
@@ -59,9 +59,9 @@ public class OaNoteServiceImplTest extends BaseDbUnitTest {
     @Resource
     private OaNoteReceiverMapper noteReceiverMapper;
 
-    @MockitoBean
+    @MockBean
     private OaNoteCategoryService noteCategoryService;
-    @MockitoBean
+    @MockBean
     private AdminUserApi adminUserApi;
 
     @AfterEach

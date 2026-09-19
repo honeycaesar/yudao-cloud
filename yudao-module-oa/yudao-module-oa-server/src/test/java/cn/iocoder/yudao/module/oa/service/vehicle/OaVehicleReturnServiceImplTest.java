@@ -1,9 +1,5 @@
 package cn.iocoder.yudao.module.oa.service.vehicle;
 
-import static org.mockito.Mockito.lenient;
-import org.junit.jupiter.api.BeforeEach;
-import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
-
 import cn.hutool.core.collection.CollUtil;
 import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import cn.iocoder.yudao.module.bpm.api.event.BpmProcessInstanceStatusEvent;
@@ -17,16 +13,18 @@ import cn.iocoder.yudao.module.oa.dal.mysql.vehicle.OaVehicleReturnMapper;
 import cn.iocoder.yudao.module.oa.dal.redis.no.OaNoRedisDAO;
 import cn.iocoder.yudao.module.oa.enums.BpmModelConstants;
 import cn.iocoder.yudao.module.oa.service.vehicle.listener.OaVehicleReturnStatusListener;
-import jakarta.annotation.Resource;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Import;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
+import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collections;
 
+import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
 import static cn.iocoder.yudao.framework.common.util.object.BeanUtils.toBean;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
@@ -34,6 +32,7 @@ import static cn.iocoder.yudao.module.oa.enums.ErrorCodeConstants.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.lenient;
 
 /**
  * {@link OaVehicleReturnServiceImpl} 的单元测试类
@@ -56,11 +55,11 @@ public class OaVehicleReturnServiceImplTest extends BaseDbUnitTest {
     @Resource
     private ApplicationEventPublisher eventPublisher;
 
-    @MockitoBean
+    @MockBean
     private OaNoRedisDAO noRedisDAO;
-    @MockitoBean
+    @MockBean
     private OaVehicleApplyService vehicleApplyService;
-    @MockitoBean
+    @MockBean
     private BpmProcessInstanceApi processInstanceApi;
 
     @BeforeEach

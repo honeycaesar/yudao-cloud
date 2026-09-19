@@ -1,11 +1,12 @@
 package cn.iocoder.yudao.module.oa.job.schedule;
 
 import cn.hutool.core.util.StrUtil;
-import com.xxl.job.core.handler.annotation.XxlJob;
 import cn.iocoder.yudao.framework.tenant.core.job.TenantJob;
 import cn.iocoder.yudao.module.oa.service.schedule.OaScheduleService;
-import jakarta.annotation.Resource;
+import com.xxl.job.core.handler.annotation.XxlJob;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 /**
  * OA 日程提醒 Job
