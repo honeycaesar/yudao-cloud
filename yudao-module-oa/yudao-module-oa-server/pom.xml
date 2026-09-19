@@ -12,8 +12,8 @@
 
     <name>${project.artifactId}</name>
     <description>
-        oa 包下，办公自动化（Office Automation）。
-        例如说：日程、工作计划、笔记、通讯录、内部邮件和讨论区等等
+        oa 包下，办公自动化（Office Automation），提供协同办公、行政管理和业务审批功能。
+        例如说：日程计划、企业云盘、请假报销、会议室、车辆、印章、公文等等
     </description>
 
     <dependencies>
